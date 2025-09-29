@@ -1,0 +1,38 @@
+<h2 class="text-center">Lista de Certificados Digitais</h2>
+<div class="container">
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Público Alvo</th>
+        <th>Validade</th>
+        <th>Preço Venda</th>
+        <th>Ativo</th>
+        <th>Meses de Validade</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cert of certificados">
+        <td>{{ cert.codigo }}</td>
+        <td>{{ cert.nome }}</td>
+        <td>{{ cert.publicoAlvo }}</td>
+        <td>{{ cert.validade | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ cert.precoVenda | currency:'BRL' }}</td>
+        <td>{{ cert.ativo ? 'Sim' : 'Não' }}</td>
+        <td>{{ cert.mesesValidade }}</td>
+        <td>
+          <button class="btn btn-success" style="margin-left: 10px;">Consultar</button>
+          <button class="btn btn-info" style="margin-left: 10px;">Alterar</button>
+          <button class="btn btn-danger" style="margin-left: 10px;">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <button class="btn btn-info" style="margin-left: 10px;">Incluir Novo Certificado</button>
+
+</div>
