@@ -17,4 +17,20 @@ export class CertificadoDigitalService {
     return this.httpClient.get<CertificadoDigital[]>(`${this.url}`);
   }
 
+  inserirCertificadoDigital(certificadodigital: CertificadoDigital): Observable<object>{
+    return this.httpClient.post(`${this.url}`, certificadodigital);
+  }
+
+  alterarCertificadoDigital(codigo: number, certificadodigital: CertificadoDigital): Observable<object>{
+    return this.httpClient.put(`${this.url}/${codigo}`, certificadodigital);
+  }
+  
+  excluirCertificadoDigital(codigo: number): Observable<object>{
+    return this.httpClient.delete(`${this.url}/${codigo}`);
+  }
+
+  consultarCertificadoDigital(codigo: number): Observable<CertificadoDigital>{
+    return this.httpClient.get<CertificadoDigital>(`${this.url}/${codigo}`);
+  }
+
 }

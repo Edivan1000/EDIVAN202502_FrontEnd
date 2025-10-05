@@ -1,0 +1,57 @@
+<div class="container">
+  <br>
+  <h3>Inserir Certificado Digital</h3>
+  <br>
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="form-group row">
+  <div class="col-4">
+    <label for="nome">Nome do Produto</label>
+    <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="certificadoDigital.nome">
+  </div>
+</div>
+
+    <div class="form-group row">
+      <div class="col-4">
+        <label for="tipoPublico">Tipo de Público</label>
+        <input type="text" class="form-control" id="tipoPublico" name="tipoPublico" [(ngModel)]="certificadoDigital.publicoAlvo">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-4">
+        <label for="dataValidade">Data de Validade</label>
+        <input type="date" class="form-control" id="dataValidade" name="dataValidade" [(ngModel)]="certificadoDigital.validade">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-4">
+        <label for="preco">Preço</label>
+        <input type="number" class="form-control" id="preco" name="preco" [(ngModel)]="certificadoDigital.precoVenda">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-4">
+        <label for="validadeMeses">Validade em Meses</label>
+        <input type="number" class="form-control" id="validadeMeses" name="validadeMeses" [(ngModel)]="certificadoDigital.mesesValidade">
+      </div>
+    </div>
+
+    <br>
+    <div class="form-check">
+      <label class="form-check-label">Ativo</label>
+      <input type="checkbox" class="form-check-input" id="ativo" name="ativo" [(ngModel)]="certificadoDigital.ativo">
+    </div>
+
+    <br>
+    <div class="form-group row">
+      <div class="col-4">
+        <button class="btn btn-info" type="submit">Salvar</button>
+        <button (click)="retornar()" class="btn btn-success" style="margin-left: 10px">Voltar</button>
+      </div>
+    </div>
+
+  </form>
+</div>

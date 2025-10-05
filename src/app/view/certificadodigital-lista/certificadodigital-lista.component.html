@@ -19,20 +19,20 @@
         <td>{{ cert.codigo }}</td>
         <td>{{ cert.nome }}</td>
         <td>{{ cert.publicoAlvo }}</td>
-        <td>{{ cert.validade | date: 'dd/MM/yyyy' }}</td>
-        <td>{{ cert.precoVenda | currency:'BRL' }}</td>
+        <td>{{ formatarData(cert.validade) }}</td>
+        <td>{{ formatarPreco(cert.precoVenda) }}</td>
         <td>{{ cert.ativo ? 'Sim' : 'Não' }}</td>
         <td>{{ cert.mesesValidade }}</td>
         <td>
-          <button class="btn btn-success" style="margin-left: 10px;">Consultar</button>
-          <button class="btn btn-info" style="margin-left: 10px;">Alterar</button>
-          <button class="btn btn-danger" style="margin-left: 10px;">Excluir</button>
+          <button (click)="consultaCertificadodigital(cert.codigo)" class="btn btn-success" style="margin-left: 10px;">Consultar</button>
+          <button (click)="alterarCertificadodigital(cert.codigo)" class="btn btn-info" style="margin-left: 10px;">Alterar</button>
+          <button (click)="excluirCertificadodigital(cert.codigo)" class="btn btn-danger" style="margin-left: 10px;">Excluir</button>
         </td>
       </tr>
     </tbody>
   </table>
 
   <br>
-  <button class="btn btn-info" style="margin-left: 10px;">Incluir Novo Certificado</button>
+  <button (click)="inserirCertificadodigital()" class="btn btn-info" style="margin-left: 10px;">Incluir Novo Certificado Digital</button>
 
 </div>
