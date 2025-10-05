@@ -20,12 +20,21 @@ export class CertificadodigitalInsereComponent {
   }
 
   inserirCertificadoDigital() {
-    this.certificadoDigital.codigo = 0;
-    this.certificadoDigitalService.inserirCertificadoDigital(this.certificadoDigital).subscribe(data => {
-      console.log(data);
-      this.retornar();
-    });
-  }
+  const novoCertificado = {
+    nomeProduto: this.certificadoDigital.nomeProduto,
+    tipoPublico: this.certificadoDigital.tipoPublico,
+    dataValidade: this.certificadoDigital.validade,
+    preco: this.certificadoDigital.preco,
+    ativo: this.certificadoDigital.ativo,
+    validadeMeses: this.certificadoDigital.validadeMeses
+    // sem id!
+  };
+
+  this.certificadoDigitalService.inserirCertificadoDigital(this.certificadoDigital).subscribe(data => {
+    console.log(data);
+    this.retornar();
+  });
+}
 
   retornar() {
     this.router.navigate(['certificadodigital-lista']);

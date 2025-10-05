@@ -7,14 +7,14 @@
     <div class="form-group row">
   <div class="col-4">
     <label for="nome">Nome do Produto</label>
-    <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="certificadoDigital.nome">
+    <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="certificadoDigital.nomeProduto">
   </div>
 </div>
 
     <div class="form-group row">
       <div class="col-4">
         <label for="tipoPublico">Tipo de Público</label>
-        <input type="text" class="form-control" id="tipoPublico" name="tipoPublico" [(ngModel)]="certificadoDigital.publicoAlvo">
+        <input type="text" class="form-control" id="tipoPublico" name="tipoPublico" [(ngModel)]="certificadoDigital.tipoPublico">
       </div>
     </div>
 
@@ -27,15 +27,15 @@
 
     <div class="form-group row">
       <div class="col-4">
-        <label for="preco">Preço</label>
-        <input type="number" class="form-control" id="preco" name="preco" [(ngModel)]="certificadoDigital.precoVenda">
+        <label for="preco">Preço de Venda</label>
+        <input type="number" class="form-control" id="precoVenda" name="precoVenda" [(ngModel)]="certificadoDigital.preco">
       </div>
     </div>
 
     <div class="form-group row">
       <div class="col-4">
         <label for="validadeMeses">Validade em Meses</label>
-        <input type="number" class="form-control" id="validadeMeses" name="validadeMeses" [(ngModel)]="certificadoDigital.mesesValidade">
+        <input type="number" class="form-control" id="validadeMeses" name="validadeMeses" [(ngModel)]="certificadoDigital.validadeMeses">
       </div>
     </div>
 

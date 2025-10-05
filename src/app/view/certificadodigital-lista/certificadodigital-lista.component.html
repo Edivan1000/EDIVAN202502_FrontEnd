@@ -4,8 +4,8 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Código</th>
-        <th>Nome</th>
+        <th>Código do Produto</th>
+        <th>Nome do Produto</th>
         <th>Público Alvo</th>
         <th>Validade</th>
         <th>Preço Venda</th>
@@ -16,17 +16,17 @@
     </thead>
     <tbody>
       <tr *ngFor="let cert of certificados">
-        <td>{{ cert.codigo }}</td>
-        <td>{{ cert.nome }}</td>
-        <td>{{ cert.publicoAlvo }}</td>
-        <td>{{ formatarData(cert.validade) }}</td>
-        <td>{{ formatarPreco(cert.precoVenda) }}</td>
-        <td>{{ cert.ativo ? 'Sim' : 'Não' }}</td>
-        <td>{{ cert.mesesValidade }}</td>
+        <td>{{ cert.id }}</td>           <!-- id -->
+        <td>{{ cert.nomeProduto }}</td>             <!-- nomeProduto -->
+        <td>{{ cert.tipoPublico }}</td>      <!-- tipoPublico -->
+        <td>{{ cert.validade }}</td>    <!-- validade -->
+        <td>{{ formatarPreco(cert.preco) }}</td> <!-- preco -->
+        <td>{{ cert.ativo ? 'Sim' : 'Não' }}</td>     <!-- ativo -->
+        <td>{{ cert.validadeMeses }}</td> <!-- Meses de Validade -->
         <td>
-          <button (click)="consultaCertificadodigital(cert.codigo)" class="btn btn-success" style="margin-left: 10px;">Consultar</button>
-          <button (click)="alterarCertificadodigital(cert.codigo)" class="btn btn-info" style="margin-left: 10px;">Alterar</button>
-          <button (click)="excluirCertificadodigital(cert.codigo)" class="btn btn-danger" style="margin-left: 10px;">Excluir</button>
+          <button (click)="consultaCertificadodigital(cert.id)" class="btn btn-success" style="margin-left: 10px;">Consultar</button>
+          <button (click)="alterarCertificadodigital(cert.id)" class="btn btn-info" style="margin-left: 10px;">Alterar</button>
+          <button (click)="excluirCertificadodigital(cert.id)" class="btn btn-danger" style="margin-left: 10px;">Excluir</button>
         </td>
       </tr>
     </tbody>

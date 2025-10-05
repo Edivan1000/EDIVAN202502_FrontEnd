@@ -8,12 +8,13 @@ import { CertificadoDigital } from '../model/certificadodigital';
 })
 export class CertificadoDigitalService {
 
-  private url = "http://localhost:8080/certificados/certificadodigital";
-
+  private url = "http://localhost:8080/ccertificadodigital/certificadodigital";
+ 
   constructor(private httpClient: HttpClient) { }
 
   //Métodos que consomem os serviços HTTP do backend
   listarCertificados(): Observable<CertificadoDigital[]> {
+    console.log('Chamando backend...');
     return this.httpClient.get<CertificadoDigital[]>(`${this.url}`);
   }
 

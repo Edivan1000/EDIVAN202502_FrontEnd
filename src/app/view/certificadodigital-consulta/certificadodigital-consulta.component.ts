@@ -30,13 +30,20 @@ codigo!: number;
   this.router.navigate(['certificadodigital-lista']);
  }
 
- consultarCertificadoDigital(){
+ consultarCertificadoDigital() {
   this.codigo = this.route.snapshot.params['codigo'];
   this.certificadodigital = new CertificadoDigital();
-  this.certificadoDigitalService.consultarCertificadoDigital(this.codigo).subscribe(data =>{
-    this.certificadodigital = data
+
+  this.certificadoDigitalService.consultarCertificadoDigital(this.codigo).subscribe(data => {
+    console.log('Certificado recebido:', data);
+    this.certificadodigital = data;
+
+    // Se vier como string ISO, converte direto
+    if (typeof this.certificadodigital.validade === 'string') {
+      this.certificadodigital.validade = new Date(this.certificadodigital.validade);
+    }
   });
- }
+}
 
 
 }

@@ -33,8 +33,8 @@ formatarData(data: Date): string {
     const ano = d.getFullYear();
     return `${dia}/${mes}/${ano}`;
   }
-  formatarPreco(valor: number): string {
-  return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  formatarPreco(valor: number | undefined): string {
+  return valor ? valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : '—';
 }
 
 consultaCertificadodigital(codigo: number){

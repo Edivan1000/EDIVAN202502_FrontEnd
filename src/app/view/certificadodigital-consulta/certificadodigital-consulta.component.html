@@ -1,1 +1,20 @@
-<p>certificadodigital-consulta works!</p>
+<div class="container">
+
+    <h3> Detalhes da Venda do Certificado Digital</h3>
+    <br>
+
+
+    <div><label><b>Código do Produto:</b></label> {{ certificadodigital.id }}</div>
+    <div><label><b>Nome do Produto:</b></label> {{ certificadodigital.nomeProduto }}</div>
+    <div><label><b>Público Alvo:</b></label> {{ certificadodigital.tipoPublico }}</div>
+    <div><label><b>Validade:</b></label> {{ certificadodigital.validade| date: 'dd/MM/yyyy' }}</div>
+    <div><label><b>Meses de Validade:</b></label> {{ certificadodigital.validadeMeses }}</div>
+    <div><label><b>Preço de Venda:</b></label> {{ certificadodigital.preco }}</div>
+    <div><label><b>Ativo:</b></label> {{ certificadodigital.ativo ? 'Sim' : 'Não' }}</div>
+
+    <br>
+    <br>
+
+
+    <div> <button (click)="retornar()" class="btn btn-sucess" style="margin-left: 10px"> Voltar</button></div>
+</div>

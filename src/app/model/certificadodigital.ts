@@ -1,9 +1,9 @@
 export class CertificadoDigital {
-  codigo!: number;            // mesmo que id
-  nome!: string;              // nomeProduto
-  publicoAlvo!: string;       // tipoPublico
-  validade!: Date;            // dataValidade
-  precoVenda!: number;        // preco
-  ativo!: boolean;            // ativo
-  mesesValidade!: number;     // validadeMeses
+  id!: number;
+  nomeProduto!: string;
+  tipoPublico!: string;
+  validade!: Date;
+  preco!: number;
+  ativo!: boolean;
+  validadeMeses!: number;
 }

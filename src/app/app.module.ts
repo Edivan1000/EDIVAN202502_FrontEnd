@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { InicioComponent } from './view/inicio/inicio.component';
@@ -24,7 +25,8 @@ import { CertificadoDigitalConsultaComponent } from './view/certificadodigital-c
     BrowserModule,
     FormsModule,
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
