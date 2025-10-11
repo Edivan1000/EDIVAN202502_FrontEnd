@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CertificadoDigital } from '../../model/certificadodigital';
 import { CertificadoDigitalService } from '../../service/certificadodigital.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-certificadodigital-lista',
@@ -50,14 +51,26 @@ inserirCertificadodigital(){
   this.router.navigate(['certificadodigital-insere']);
 }
 
-excluirCertificadodigital(codigo: number){
-  if(confirm("Deseja realmente excluir o produto?")){
-    this.certService.excluirCertificadoDigital(codigo).subscribe(data =>{
-      console.log(data);
-      this.listarCertificados();
-    });
-  }
-}  
+excluirCertificadodigital(codigo: number) {
+  Swal.fire({
+    title: 'Tem certeza?',
+    text: 'Essa ação excluirá o certificado digital.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Sim, excluir',
+    cancelButtonText: 'Cancelar',
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.certService.excluirCertificadoDigital(codigo).subscribe(data => {
+        console.log(data);
+        this.listarCertificados();
+        Swal.fire('Excluído!', 'O certificado foi removido com sucesso.', 'success');
+      });
+    }
+  });
+}
 
 
 

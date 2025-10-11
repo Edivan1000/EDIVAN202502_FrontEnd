@@ -1,20 +1,30 @@
-<div class="container">
+<div class="container mt-4 p-4 border rounded shadow-sm bg-light">
 
-    <h3> Detalhes da Venda do Certificado Digital</h3>
-    <br>
+  <h3 class="mb-4 text-center text-primary">Detalhes da Venda do Certificado Digital</h3>
 
+  <div class="row mb-2">
+    <div class="col-md-6"><strong>Código do Produto:</strong> {{ certificadodigital.id }}</div>
+    <div class="col-md-6"><strong>Nome do Produto:</strong> {{ certificadodigital.nomeProduto }}</div>
+  </div>
 
-    <div><label><b>Código do Produto:</b></label> {{ certificadodigital.id }}</div>
-    <div><label><b>Nome do Produto:</b></label> {{ certificadodigital.nomeProduto }}</div>
-    <div><label><b>Público Alvo:</b></label> {{ certificadodigital.tipoPublico }}</div>
-    <div><label><b>Validade:</b></label> {{ certificadodigital.validade| date: 'dd/MM/yyyy' }}</div>
-    <div><label><b>Meses de Validade:</b></label> {{ certificadodigital.validadeMeses }}</div>
-    <div><label><b>Preço de Venda:</b></label> {{ certificadodigital.preco }}</div>
-    <div><label><b>Ativo:</b></label> {{ certificadodigital.ativo ? 'Sim' : 'Não' }}</div>
+  <div class="row mb-2">
+    <div class="col-md-6"><strong>Público Alvo:</strong> {{ certificadodigital.tipoPublico }}</div>
+    <div class="col-md-6"><strong>Validade:</strong> {{ certificadodigital.validade | date: 'dd/MM/yyyy' }}</div>
+  </div>
 
-    <br>
-    <br>
+  <div class="row mb-2">
+    <div class="col-md-6"><strong>Meses de Validade:</strong> {{ certificadodigital.validadeMeses }}</div>
+    <div class="col-md-6"><strong>Preço de Venda:</strong> R$ {{ certificadodigital.preco }}</div>
+  </div>
 
+  <div class="row mb-4">
+    <div class="col-md-6"><strong>Ativo:</strong> {{ certificadodigital.ativo ? 'Sim' : 'Não' }}</div>
+  </div>
 
-    <div> <button (click)="retornar()" class="btn btn-sucess" style="margin-left: 10px"> Voltar</button></div>
+  <div class="text-end">
+    <button (click)="retornar()" class="btn btn-success btn-voltar">
+      ⬅️ Voltar
+    </button>
+  </div>
+
 </div>

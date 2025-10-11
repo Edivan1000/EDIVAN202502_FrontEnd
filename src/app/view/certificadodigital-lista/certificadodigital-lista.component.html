@@ -1,38 +1,48 @@
-<h2 class="text-center">Lista de Certificados Digitais</h2>
-<div class="container">
+<div class="container mt-4 p-4 border rounded shadow-sm bg-light">
 
-  <table class="table table-striped">
-    <thead>
+  <h2 class="text-center text-primary fw-bold mb-4">📄 Lista de Certificados Digitais</h2>
+
+  <table class="table table-striped table-hover align-middle">
+    <thead class="table-dark text-center">
       <tr>
-        <th>Código do Produto</th>
-        <th>Nome do Produto</th>
-        <th>Público Alvo</th>
-        <th>Validade</th>
-        <th>Preço Venda</th>
-        <th>Ativo</th>
-        <th>Meses de Validade</th>
-        <th>Ações</th>
+        <th class="fw-bold">Código do Produto</th>
+        <th class="fw-bold">Nome do Produto</th>
+        <th class="fw-bold">Público Alvo</th>
+        <th class="fw-bold">Validade</th>
+        <th class="fw-bold">Preço Venda</th>
+        <th class="fw-bold">Ativo</th>
+        <th class="fw-bold">Meses de Validade</th>
+        <th class="fw-bold">Ações</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let cert of certificados">
-        <td>{{ cert.id }}</td>           <!-- id -->
-        <td>{{ cert.nomeProduto }}</td>             <!-- nomeProduto -->
-        <td>{{ cert.tipoPublico }}</td>      <!-- tipoPublico -->
-        <td>{{ cert.validade }}</td>    <!-- validade -->
-        <td>{{ formatarPreco(cert.preco) }}</td> <!-- preco -->
-        <td>{{ cert.ativo ? 'Sim' : 'Não' }}</td>     <!-- ativo -->
-        <td>{{ cert.validadeMeses }}</td> <!-- Meses de Validade -->
-        <td>
-          <button (click)="consultaCertificadodigital(cert.id)" class="btn btn-success" style="margin-left: 10px;">Consultar</button>
-          <button (click)="alterarCertificadodigital(cert.id)" class="btn btn-info" style="margin-left: 10px;">Alterar</button>
-          <button (click)="excluirCertificadodigital(cert.id)" class="btn btn-danger" style="margin-left: 10px;">Excluir</button>
+        <td>{{ cert.id }}</td>
+        <td>{{ cert.nomeProduto }}</td>
+        <td>{{ cert.tipoPublico }}</td>
+        <td>{{ cert.validade | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ formatarPreco(cert.preco) }}</td>
+        <td>{{ cert.ativo ? 'Sim' : 'Não' }}</td>
+        <td>{{ cert.validadeMeses }}</td>
+        <td class="text-end">
+          <button (click)="consultaCertificadodigital(cert.id)" class="btn btn-success btn-consultar me-1">
+            🔍 Consultar
+          </button>
+          <button (click)="alterarCertificadodigital(cert.id)" class="btn btn-info btn-alterar me-1">
+            ✏️ Alterar
+          </button>
+          <button (click)="excluirCertificadodigital(cert.id)" class="btn btn-danger btn-excluir">
+            🗑️ Excluir
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
 
-  <br>
-  <button (click)="inserirCertificadodigital()" class="btn btn-info" style="margin-left: 10px;">Incluir Novo Certificado Digital</button>
+  <div class="text-end mt-3">
+    <button (click)="inserirCertificadodigital()" class="btn btn-info fw-bold" style="margin-left: 10px;">
+  ➕Incluir Novo Certificado Digital
+</button>
+  </div>
 
 </div>
