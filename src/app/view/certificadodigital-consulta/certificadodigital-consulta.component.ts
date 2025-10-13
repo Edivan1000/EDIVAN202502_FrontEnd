@@ -11,8 +11,11 @@ import { CertificadoDigitalService } from '../../service/certificadodigital.serv
 })
 export class CertificadoDigitalConsultaComponent {
 
-certificadodigital!: CertificadoDigital;
-codigo!: number;
+  // Armazena o certificado consultado
+  certificadodigital!: CertificadoDigital;
+
+  // Código usado na busca
+  codigo!: number;
 
   constructor(
   private certificadoDigitalService: CertificadoDigitalService,
@@ -20,16 +23,18 @@ codigo!: number;
   private route: ActivatedRoute
 ) {}
 
-
+  // Executa ao carregar o componente
   ngOnInit(): void {
       this.consultarCertificadoDigital();
    
   }
 
+// Volta para a tela de listagem
  retornar(){
   this.router.navigate(['certificadodigital-lista']);
  }
 
+ // Consulta o certificado pelo código
  consultarCertificadoDigital() {
   this.codigo = this.route.snapshot.params['codigo'];
   this.certificadodigital = new CertificadoDigital();
@@ -38,7 +43,7 @@ codigo!: number;
     console.log('Certificado recebido:', data);
     this.certificadodigital = data;
 
-    // Se vier como string ISO, converte direto
+    // Converte a data se vier como string
     if (typeof this.certificadodigital.validade === 'string') {
       this.certificadodigital.validade = new Date(this.certificadodigital.validade);
     }

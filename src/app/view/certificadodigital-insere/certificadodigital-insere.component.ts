@@ -11,6 +11,7 @@ import { CertificadoDigitalService } from '../../service/certificadodigital.serv
 })
 export class CertificadodigitalInsereComponent {
 
+  // Modelo que recebe os dados do formulário
   certificadoDigital: CertificadoDigital = new CertificadoDigital();
 
   constructor(private certificadoDigitalService: CertificadoDigitalService, private router: Router) {}
@@ -18,7 +19,7 @@ export class CertificadodigitalInsereComponent {
   onSubmit() {
     this.inserirCertificadoDigital();
   }
-
+  // Chama o serviço para salvar o certificado
   inserirCertificadoDigital() {
   const novoCertificado = {
     nomeProduto: this.certificadoDigital.nomeProduto,
@@ -36,6 +37,7 @@ export class CertificadodigitalInsereComponent {
   });
 }
 
+  // Volta para a tela de listagem
   retornar() {
     this.router.navigate(['certificadodigital-lista']);
   }

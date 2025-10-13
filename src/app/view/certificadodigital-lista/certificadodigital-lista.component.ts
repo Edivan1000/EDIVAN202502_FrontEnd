@@ -12,14 +12,17 @@ import Swal from 'sweetalert2';
 })
 export class CertificadodigitalListaComponent implements OnInit {
 
+  // Lista de certificados exibidos na tabela
   certificados!: CertificadoDigital[];
 
   constructor(private certService: CertificadoDigitalService, private router: Router) {}
 
+  // Carrega os certificados ao iniciar
   ngOnInit(): void {
     this.listarCertificados();
   }
 
+  // Busca todos os certificados
   private listarCertificados() {
   this.certService.listarCertificados().subscribe(data => {
     console.log('Certificados recebidos:', data); // ← VERIFICA SE VEM ALGO
@@ -27,6 +30,7 @@ export class CertificadodigitalListaComponent implements OnInit {
   });
 }
 
+// Formata a data para dd/mm/aaaa
 formatarData(data: Date): string {
     const d = new Date(data);
     const dia = String(d.getDate()).padStart(2, '0');
@@ -34,23 +38,28 @@ formatarData(data: Date): string {
     const ano = d.getFullYear();
     return `${dia}/${mes}/${ano}`;
   }
+
+  // Formata o preço para moeda brasileira
   formatarPreco(valor: number | undefined): string {
   return valor ? valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : '—';
 }
 
+// Vai para a tela de consulta
 consultaCertificadodigital(codigo: number){
   this.router.navigate(['certificadodigital-consulta', codigo]);
 }  
 
-
+// Vai para a tela de alteração
 alterarCertificadodigital(codigo: number){
   this.router.navigate(['certificadodigital-altera', codigo]);
 }
 
+// Vai para a tela de inclusão
 inserirCertificadodigital(){
   this.router.navigate(['certificadodigital-insere']);
 }
 
+// Exclui o certificado com confirmação
 excluirCertificadodigital(codigo: number) {
   Swal.fire({
     title: 'Tem certeza?',

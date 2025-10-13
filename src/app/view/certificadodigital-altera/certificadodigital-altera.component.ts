@@ -11,7 +11,10 @@ import { CertificadoDigitalService } from '../../service/certificadodigital.serv
 })
 export class CertificadodigitalAlteraComponent implements OnInit {
 
+  // Código do certificado a ser alterado
   codigo!: number;
+
+  // Dados do certificado
   certificadoDigital!: CertificadoDigital;
 
   constructor(
@@ -20,10 +23,12 @@ export class CertificadodigitalAlteraComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
+  // Ao iniciar, carrega os dados do certificado
   ngOnInit(): void {
     this.consultarCertificadoDigital();
   }
 
+  // Envia os dados atualizados
   onSubmit() {
     this.certificadoDigitalService.alterarCertificadoDigital(this.codigo, this.certificadoDigital).subscribe(data => {
       console.log(data);
@@ -31,6 +36,7 @@ export class CertificadodigitalAlteraComponent implements OnInit {
     });
   }
 
+  // Consulta os dados atuais do certificado
   consultarCertificadoDigital() {
     this.codigo = this.route.snapshot.params['codigo'];
     this.certificadoDigital = new CertificadoDigital();
@@ -39,6 +45,7 @@ export class CertificadodigitalAlteraComponent implements OnInit {
     });
   }
 
+  // Volta para a tela de listagem
   retornar() {
     this.router.navigate(['certificadodigital-lista']);
   }
