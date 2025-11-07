@@ -1,0 +1,35 @@
+/* Card hover */
+.card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Jumbotron */
+.jumbotron {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  border-radius: 0.5rem;
+}
+
+/* Imagens de certificados */
+.img-fluid {
+  transition: transform 0.2s;
+}
+.img-fluid:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Ajuste responsivo */
+@media (max-width: 768px) {
+  .row.g-4 > .col-md-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .d-flex.justify-content-center.flex-wrap.gap-3.mb-4 img {
+    width: 80% !important;
+  }
+}

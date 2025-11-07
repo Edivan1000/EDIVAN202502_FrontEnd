@@ -1,27 +1,32 @@
-<!-- Título principal centralizado e estilizado -->
-<h2 class="text-center text-primary fw-bold mt-4">
-  Bem-vindo ao Sistema de Gestão de Certificados Digitais
-</h2>
+<div class="container mt-4">
 
-<!-- Parágrafo de apresentação com destaque nos tipos de certificados -->
-<p class="text-center mt-3">
-  Adquira seu <strong>Certificado Digital</strong> com segurança, agilidade e suporte especializado.  
-  Oferecemos opções como <strong>A1</strong> e <strong>A3</strong>, ideais para empresas, profissionais e pessoas físicas.  
-  Faça sua escolha, agende sua emissão e conte com nosso atendimento de confiança.
-</p>
+  <!-- Banner / Boas-vindas -->
+  <div class="jumbotron bg-primary text-white p-4 rounded mb-4 text-center">
+    <h1 class="display-5 fw-bold">Bem-vindo ao Sistema de Gestão de Certificados Digitais</h1>
+    <p class="lead mt-3">
+      Adquira seu <strong>Certificado Digital</strong> com segurança, agilidade e suporte especializado.<br>
+      Oferecemos opções como <strong>A1</strong> e <strong>A3</strong>, ideais para empresas, profissionais e pessoas físicas.
+    </p>
+  </div>
 
-<!-- Botão comentado que poderia levar à listagem de certificados -->
-<!--
-<div class="text-center mt-4">
-  <a routerLink="/certificados" class="btn btn-primary fw-bold">
-    Acessar Certificados Digitais
-  </a>
-</div>
--->
+  <!-- Cards de atalhos -->
+  <div class="row g-4 mb-4">
+    <div class="col-md-3" *ngFor="let card of cards">
+      <div class="card h-100 text-center shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{ card.titulo }}</h5>
+          <p class="card-text">{{ card.descricao }}</p>
+          <a [routerLink]="card.link" class="btn btn-primary">Acessar</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<!-- Imagens ilustrativas dos certificados digitais -->
-<div class="text-center mt-4">
-  <img src="/a1.jpg" alt="Certificado Digital" class="img-fluid rounded" width="350">
-  <img src="/cds2.jpg" class="img-fluid rounded" width="450">
-  <img src="/a3.jpg" alt="Certificado Digital" class="img-fluid rounded" width="350">
+  <!-- Imagens ilustrativas dos certificados -->
+  <div class="d-flex justify-content-center flex-wrap gap-3 mb-4">
+    <img src="/a1.jpg" alt="Certificado A1" class="img-fluid rounded shadow-sm" width="250">
+    <img src="/cds2.jpg" alt="Certificados" class="img-fluid rounded shadow-sm" width="300">
+    <img src="/a3.jpg" alt="Certificado A3" class="img-fluid rounded shadow-sm" width="250">
+  </div>
+
 </div>

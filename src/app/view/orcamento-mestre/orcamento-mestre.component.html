@@ -1,0 +1,58 @@
+<div class="container mt-4">
+  <h2>Montar Orçamento</h2>
+  <form [formGroup]="orcamentoForm" (ngSubmit)="salvarOrcamento()">
+
+    <div class="mb-3">
+      <label>Cliente</label>
+      <select class="form-select" formControlName="clienteId">
+        <option value="">Selecione...</option>
+        <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nome }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Data da Solicitação</label>
+      <input type="date" class="form-control" formControlName="dataSolicitacao" />
+    </div>
+
+    <div class="mb-3">
+      <label>Adicionar Certificado</label>
+      <select class="form-select" #certSelect>
+        <option value="">Selecione...</option>
+        <option *ngFor="let cert of certificados" [value]="cert.id">{{ cert.nome }}</option>
+      </select>
+      <button type="button" class="btn btn-primary mt-2" (click)="adicionarCertificado(certSelect.value)">Adicionar</button>
+    </div>
+
+    <table class="table table-bordered mt-3" *ngIf="certificadosFormArray.length > 0">
+      <thead class="table-light">
+        <tr>
+          <th>Certificado</th>
+          <th>Produto / Opção</th>
+          <th>Quantidade</th>
+          <th>Valor</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cert of certificadosFormGroups; let i = index" [formGroup]="cert">
+          <td>{{ getNomeCertificado(cert.get('certificadoId')?.value) }}</td>
+          <td>
+        <select class="form-select" formControlName="produtoOpcaoId" (change)="produtoSelecionadoChange(i, $event)">  <option value="">Selecione...</option>
+              <option *ngFor="let p of produtosOpcoes" [value]="p.id">{{ p.nome }}</option>
+            </select>
+          </td>
+          <td><input type="number" class="form-control" formControlName="quantidade" (input)="calcularValorTotal()" /></td>
+          <td>R$ {{ cert.get('valor')?.value.toFixed(2) }}</td>
+          <td><button type="button" class="btn btn-danger btn-sm" (click)="removerCertificado(i)">Remover</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="mt-3">
+      <h5>Valor Total: R$ {{ valorTotal.toFixed(2) }}</h5>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Enviar Orçamento</button>
+  </form>
+</div>

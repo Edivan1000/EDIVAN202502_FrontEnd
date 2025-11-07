@@ -1,0 +1,61 @@
+<div class="container">
+
+  <h2>Clientes</h2>
+
+  <!-- Formulário de Inserção / Edição -->
+  <form [formGroup]="formCliente" (ngSubmit)="salvar()" class="form">
+    <div>
+      <label>Nome:</label>
+      <input formControlName="nome" />
+    </div>
+
+    <div>
+      <label>Email:</label>
+      <input type="email" formControlName="email" />
+    </div>
+
+    <div>
+      <label>Telefone:</label>
+      <input formControlName="telefone" />
+    </div>
+
+    <div>
+      <label>Tipo:</label>
+      <select formControlName="publico">
+        <option *ngFor="let tipo of publicos" [value]="tipo">{{ tipo }}</option>
+      </select>
+    </div>
+
+    <button type="submit">{{ editando ? 'Atualizar' : 'Inserir' }}</button>
+    <button type="button" (click)="cancelar()" *ngIf="editando">Cancelar</button>
+  </form>
+
+  <hr />
+
+  <!-- Lista de Clientes -->
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>Tipo</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <td>{{ cliente.nome }}</td>
+        <td>{{ cliente.email }}</td>
+        <td>{{ cliente.telefone }}</td>
+        <td>{{ cliente.publico }}</td>
+        <td>
+          <button (click)="editar(cliente)">Editar</button>
+          <button (click)="excluir(cliente.id!)">Excluir</button>
+          <button (click)="consultar(cliente)">Consultar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

@@ -1,15 +1,30 @@
 <!-- Barra de navegação superior com estilo Bootstrap -->
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
   <ul class="navbar-nav">
-    <!-- Link para a página inicial -->
-      <li class="nav-item">
-          <a routerLink="inicio" routerLinkActive="active" class="nav-link">Home</a>
-      </li>
-
-      <!-- Link para a listagem de certificados digitais -->
-      <li class="nav-item">
-          <a routerLink="certificadodigital-lista" routerLinkActive="active" class="nav-link">Certificados Digitais</a>
-      </li>
+    <li class="nav-item">
+      <a routerLink="inicio" routerLinkActive="active" class="nav-link">Home</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="cliente" routerLinkActive="active" class="nav-link">Clientes</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="empresa" routerLinkActive="active" class="nav-link">Empresas</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="produto" routerLinkActive="active" class="nav-link">Produtos</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="produto-opcao" routerLinkActive="active" class="nav-link">Opções de Produto</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="opcao-validade" routerLinkActive="active" class="nav-link">Validade</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="orcamento" routerLinkActive="active" class="nav-link">Orçamentos</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="orcamento-mestre" routerLinkActive="active" class="nav-link">Orçamento Mestre</a>
+    </li>
   </ul>
 </nav>
 
@@ -17,8 +32,8 @@
 <router-outlet></router-outlet>
 
 <!-- Rodapé fixo com versão do sistema -->
-<footer class="footer">
-  <div class="container">
-      <span>Sistema de Gestão de Certificados Digitais- V1.0</span>
+<footer class="footer mt-3">
+  <div class="container text-center">
+    <span>Sistema de Gestão - V1.0</span>
   </div>
 </footer>

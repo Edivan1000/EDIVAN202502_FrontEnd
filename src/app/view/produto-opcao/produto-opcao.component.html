@@ -1,0 +1,77 @@
+<div class="container">
+  <h2>Opções de Produto</h2>
+
+  <form [formGroup]="formProdutoOpcao" (ngSubmit)="salvar()" class="form">
+    <div>
+      <label>Nome:</label>
+      <input formControlName="nome" />
+    </div>
+
+    <div>
+      <label>Descrição:</label>
+      <input formControlName="descricao" />
+    </div>
+
+    <div>
+      <label>Preço Adicional:</label>
+      <input type="number" formControlName="precoAdicional" />
+    </div>
+
+    <div>
+      <label>Ativo:</label>
+      <select formControlName="ativo">
+        <option [value]="true">Sim</option>
+        <option [value]="false">Não</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Produto:</label>
+      <select formControlName="produtoId">
+        <option *ngFor="let produto of produtos" [value]="produto.id">{{ produto.nome }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Validade:</label>
+      <select formControlName="opcaoValidadeId">
+        <option *ngFor="let opcao of opcoesValidade" [value]="opcao.id">{{ opcao.nome }}</option>
+      </select>
+    </div>
+
+    <button type="submit">{{ editando ? 'Atualizar' : 'Inserir' }}</button>
+    <button type="button" (click)="cancelar()" *ngIf="editando">Cancelar</button>
+  </form>
+
+  <hr />
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Preço Adicional</th>
+        <th>Ativo</th>
+        <th>Produto</th>
+        <th>Validade</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let po of produtoOpcoes">
+        <td>{{ po.nome }}</td>
+        <td>{{ po.descricao }}</td>
+        <td>R$ {{ po.precoAdicional.toFixed(2) }}</td>
+        <td>{{ po.ativo ? 'Sim' : 'Não' }}</td>
+        <td>{{ getNomeProduto(po.produtoId) }}</td>
+        <td>{{ getNomeOpcaoValidade(po.opcaoValidadeId) }}</td>
+
+        <td>
+          <button (click)="editar(po)">Editar</button>
+          <button (click)="excluir(po.id!)">Excluir</button>
+          <button (click)="consultar(po)">Consultar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

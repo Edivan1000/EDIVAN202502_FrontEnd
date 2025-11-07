@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>Empresas</h2>
+
+  <!-- Formulário de Inserção / Edição -->
+  <form [formGroup]="formEmpresa" (ngSubmit)="salvar()" class="form">
+    <div>
+      <label>Nome:</label>
+      <input formControlName="nome" />
+    </div>
+
+    <div>
+      <label>CNPJ:</label>
+      <input formControlName="cnpj" />
+    </div>
+
+    <button type="submit">{{ editando ? 'Atualizar' : 'Inserir' }}</button>
+    <button type="button" (click)="cancelar()" *ngIf="editando">Cancelar</button>
+  </form>
+
+  <hr />
+
+  <!-- Lista de Empresas -->
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>CNPJ</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let empresa of empresas">
+        <td>{{ empresa.nome }}</td>
+        <td>{{ empresa.cnpj }}</td>
+        <td>
+          <button (click)="editar(empresa)">Editar</button>
+          <button (click)="excluir(empresa.id!)">Excluir</button>
+          <button (click)="consultar(empresa)">Consultar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

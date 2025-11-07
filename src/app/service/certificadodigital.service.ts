@@ -8,37 +8,35 @@ import { CertificadoDigital } from '../model/certificadodigital';
 })
 export class CertificadoDigitalService {
 
-  // URL base da API
-  private url = "http://localhost:8080/ccertificadodigital/certificadodigital";
+  // URL base da API (ajuste se o endpoint mudar)
+  private baseUrl = 'http://localhost:8080/ccertificadodigital/certificadodigital';
  
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  //Métodos que consomem os serviços HTTP do backend
-
-  // Lista todos os certificados
+  /** Lista todos os certificados */
   listarCertificados(): Observable<CertificadoDigital[]> {
-    console.log('Chamando backend...');
-    return this.httpClient.get<CertificadoDigital[]>(`${this.url}`);
+    console.log('Chamando backend: listando certificados...');
+    return this.http.get<CertificadoDigital[]>(this.baseUrl);
   }
 
-  // Insere um novo certificado
-  inserirCertificadoDigital(certificadodigital: CertificadoDigital): Observable<object>{
-    return this.httpClient.post(`${this.url}`, certificadodigital);
+  /** Insere um novo certificado */
+  inserir(certificado: CertificadoDigital): Observable<CertificadoDigital> {
+    return this.http.post<CertificadoDigital>(this.baseUrl, certificado);
   }
 
-  // Altera um certificado existente
-  alterarCertificadoDigital(codigo: number, certificadodigital: CertificadoDigital): Observable<object>{
-    return this.httpClient.put(`${this.url}/${codigo}`, certificadodigital);
+  /** Altera um certificado existente */
+  alterar(codigo: number, certificado: CertificadoDigital): Observable<CertificadoDigital> {
+    return this.http.put<CertificadoDigital>(`${this.baseUrl}/${codigo}`, certificado);
   }
   
-  // Exclui um certificado
-  excluirCertificadoDigital(codigo: number): Observable<object>{
-    return this.httpClient.delete(`${this.url}/${codigo}`);
+  /** Exclui um certificado */
+  excluir(codigo: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${codigo}`);
   }
 
-  // Consulta um certificado pelo código
-  consultarCertificadoDigital(codigo: number): Observable<CertificadoDigital>{
-    return this.httpClient.get<CertificadoDigital>(`${this.url}/${codigo}`);
+  /** Consulta um certificado pelo código */
+  consultar(codigo: number): Observable<CertificadoDigital> {
+    return this.http.get<CertificadoDigital>(`${this.baseUrl}/${codigo}`);
   }
 
 }

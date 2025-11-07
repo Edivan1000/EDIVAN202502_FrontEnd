@@ -1,34 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
 import { InicioComponent } from './view/inicio/inicio.component';
-import { CertificadodigitalInsereComponent } from './view/certificadodigital-insere/certificadodigital-insere.component';
-import { CertificadodigitalAlteraComponent } from './view/certificadodigital-altera/certificadodigital-altera.component'; // ← ADICIONADO
-import { CertificadodigitalListaComponent } from './view/certificadodigital-lista/certificadodigital-lista.component';
-import { CertificadoDigitalConsultaComponent } from './view/certificadodigital-consulta/certificadodigital-consulta.component';
+import { CertificadoDigitalComponent } from './view/certificadodigital/certificadodigital.component';
+import { ClienteComponent } from './view/cliente/cliente.component';
+import { EmpresaComponent } from './view/empresa/empresa.component';
+import { ProdutoComponent } from './view/produto/produto.component';
+import { ProdutoOpcaoComponent } from './view/produto-opcao/produto-opcao.component';
+import { OpcaoValidadeComponent } from './view/opcao-validade/opcao-validade.component';
+import { OrcamentoComponent } from './view/orcamento/orcamento.component';
+import { OrcamentoMestreComponent } from './view/orcamento-mestre/orcamento-mestre.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CertificadodigitalListaComponent,
-    InicioComponent,
-    CertificadodigitalAlteraComponent,
-    CertificadoDigitalConsultaComponent,
-    CertificadodigitalInsereComponent
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    CommonModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule { }

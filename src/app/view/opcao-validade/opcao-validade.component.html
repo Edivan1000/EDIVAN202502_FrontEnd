@@ -1,0 +1,60 @@
+<div class="container">
+  <h2>Opções de Validade</h2>
+
+  <form [formGroup]="formOpcaoValidade" (ngSubmit)="salvar()" class="form">
+    <div>
+      <label>Validade (meses):</label>
+      <input type="number" formControlName="validadeMeses" />
+    </div>
+
+    <div>
+      <label>Preço:</label>
+      <input type="number" formControlName="preco" />
+    </div>
+
+    <div>
+      <label>Tipo Público:</label>
+      <select formControlName="tipoPublico">
+        <option *ngFor="let tipo of tiposPublico" [value]="tipo">{{ tipo }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Certificado:</label>
+      <select formControlName="certificadoId">
+        <option *ngFor="let cert of certificados" [value]="cert.id">{{ cert.nome }}</option>
+      </select>
+    </div>
+
+    <button type="submit">{{ editando ? 'Atualizar' : 'Inserir' }}</button>
+    <button type="button" (click)="cancelar()" *ngIf="editando">Cancelar</button>
+  </form>
+
+  <hr />
+
+  <table>
+    <thead>
+      <tr>
+        <th>Validade (meses)</th>
+        <th>Preço</th>
+        <th>Tipo Público</th>
+        <th>Certificado</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let opcao of opcoesValidade">
+        <td>{{ opcao.validadeMeses }}</td>
+        <td>R$ {{ opcao.preco.toFixed(2) }}</td>
+        <td>{{ opcao.tipoPublico }}</td>
+        <td>{{ getNomeCertificado(opcao.certificadoId) }}</td>
+
+        <td>
+          <button (click)="editar(opcao)">Editar</button>
+          <button (click)="excluir(opcao.id!)">Excluir</button>
+          <button (click)="consultar(opcao)">Consultar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

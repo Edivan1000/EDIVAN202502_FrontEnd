@@ -1,0 +1,59 @@
+<div class="container">
+
+  <h2>Certificados Digitais</h2>
+
+  <!-- Formulário de Inserção / Edição -->
+  <form [formGroup]="formCertificado" (ngSubmit)="salvar()" class="form">
+    <div>
+      <label>Nome:</label>
+      <input formControlName="nome" />
+    </div>
+
+    <div>
+      <label>Ativo:</label>
+      <input type="checkbox" formControlName="ativo" />
+    </div>
+
+    <div>
+      <label>Produto Opção ID:</label>
+      <input type="number" formControlName="produtoOpcaoId" />
+    </div>
+
+    <div>
+      <label>Orçamento ID:</label>
+      <input type="number" formControlName="orcamentoId" />
+    </div>
+
+    <button type="submit">{{ editando ? 'Atualizar' : 'Inserir' }}</button>
+    <button type="button" (click)="cancelar()" *ngIf="editando">Cancelar</button>
+  </form>
+
+  <hr />
+
+  <!-- Lista de Certificados -->
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Ativo</th>
+        <th>Produto Opção ID</th>
+        <th>Orçamento ID</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cert of certificados">
+        <td>{{ cert.nome }}</td>
+        <td>{{ cert.ativo }}</td>
+        <td>{{ cert.produtoOpcaoId }}</td>
+        <td>{{ cert.orcamentoId }}</td>
+        <td>
+          <button (click)="editar(cert)">Editar</button>
+          <button (click)="excluir(cert.id)">Excluir</button>
+          <button (click)="consultar(cert)">Consultar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

@@ -1,0 +1,60 @@
+<div class="container">
+  <h2>Orçamentos</h2>
+
+  <form [formGroup]="formOrcamento" (ngSubmit)="salvar()" class="form">
+    <div>
+      <label>Data da Solicitação:</label>
+      <input type="date" formControlName="dataSolicitacao" />
+    </div>
+
+    <div>
+      <label>Valor Total:</label>
+      <input type="number" formControlName="valorTotal" />
+    </div>
+
+    <div>
+      <label>Cliente:</label>
+      <select formControlName="clienteId">
+        <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nome }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Certificados:</label>
+      <select formControlName="certificadosIds" multiple>
+        <option *ngFor="let cert of certificados" [value]="cert.id">{{ cert.nome }}</option>
+      </select>
+    </div>
+
+    <button type="submit">{{ editando ? 'Atualizar' : 'Inserir' }}</button>
+    <button type="button" (click)="cancelar()" *ngIf="editando">Cancelar</button>
+  </form>
+
+  <hr />
+
+  <table>
+    <thead>
+      <tr>
+        <th>Data Solicitação</th>
+        <th>Valor Total</th>
+        <th>Cliente</th>
+        <th>Certificados</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let o of orcamentos">
+        <td>{{ o.dataSolicitacao }}</td>
+        <td>R$ {{ o.valorTotal.toFixed(2) }}</td>
+        <td>{{ getNomeCliente(o.clienteId) }}</td>
+        <td>{{ getNomesCertificados(o.certificadosIds) }}</td>
+
+        <td>
+          <button (click)="editar(o)">Editar</button>
+          <button (click)="excluir(o.id!)">Excluir</button>
+          <button (click)="consultar(o)">Consultar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
